@@ -12,6 +12,7 @@ builder.Services.AddDbContext<DatingAppContext>(options=>
                     options.UseSqlServer(builder.Configuration.GetConnectionString("DatingApp")));
 builder.Services.AddScoped<IAppUserAppService,AppUserAppService>();
 builder.Services.AddAutoMapper(e=>e.AddProfile<DatingAppProfile>());
+builder.Services.AddCors();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,7 +23,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
+app.UseCors(policy=> policy.AllowAnyHeader().AllowAnyHeader().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 app.UseAuthorization();
 
 app.MapControllers();
