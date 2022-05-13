@@ -1,9 +1,11 @@
 ﻿using DatingApp.DTO.Input;
 using DatingApp.Services.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.Controllers
 {
+    [Authorize]
     public class AuthController : DatingAppController
     {
         private readonly IAuthAppService _service;
@@ -14,6 +16,7 @@ namespace DatingApp.Controllers
         }
         [HttpPost]
         [Route("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterUser input)
         {
             try
@@ -29,6 +32,7 @@ namespace DatingApp.Controllers
         }
         [HttpPost]
         [Route("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginUser input)
         {
             try
