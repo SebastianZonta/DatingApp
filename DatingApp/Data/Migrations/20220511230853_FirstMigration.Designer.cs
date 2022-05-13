@@ -14,32 +14,32 @@ namespace DatingApp.Migrations
     [Migration("20220511230853_FirstMigration")]
     partial class FirstMigration
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
-        {
-#pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+//        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+//        {
+//#pragma warning disable 612, 618
+//            modelBuilder
+//                .HasAnnotation("ProductVersion", "6.0.5")
+//                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+//            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DatingApp.Entities.AppUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+//            modelBuilder.Entity("DatingApp.Entities.AppUser", b =>
+//                {
+//                    b.Property<int>("Id")
+//                        .ValueGeneratedOnAdd()
+//                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+//                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+//                    b.Property<string>("UserName")
+//                        .IsRequired()
+//                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+//                    b.HasKey("Id");
 
-                    b.ToTable("Users");
-                });
-#pragma warning restore 612, 618
-        }
+//                    b.ToTable("Users");
+//                });
+//#pragma warning restore 612, 618
+//        }
     }
 }

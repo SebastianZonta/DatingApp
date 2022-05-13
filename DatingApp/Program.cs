@@ -1,6 +1,8 @@
 using DatingApp.AutoMapper;
 using DatingApp.Data.Context;
 using DatingApp.Services;
+using DatingApp.Services.Auth;
+using DatingApp.Services.BearerToken;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatingAppContext>(options=>
                     options.UseSqlServer(builder.Configuration.GetConnectionString("DatingApp")));
 builder.Services.AddScoped<IAppUserAppService,AppUserAppService>();
+builder.Services.AddScoped<IAuthAppService, AuthAppService>();
+builder.Services.AddScoped<IBearerTokenAppService,BearerTokenAppService>();
 builder.Services.AddAutoMapper(e=>e.AddProfile<DatingAppProfile>());
 builder.Services.AddCors();
 var app = builder.Build();
