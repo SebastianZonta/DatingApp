@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AppUserController : DatingAppController
     {
         private readonly IAppUserAppService _service;
