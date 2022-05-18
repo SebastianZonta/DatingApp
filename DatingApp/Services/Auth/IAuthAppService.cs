@@ -5,7 +5,7 @@ namespace DatingApp.Services.Auth
 {
     public interface IAuthAppService : IDatingAppAppService
     {
-        Task<AppUserDto> Register(RegisterUser inputUser);
+        Task<LoggedUserDto> Register(RegisterUser inputUser);
         Task<LoggedUserDto> Login(LoginUser inputUser);
     }
 }

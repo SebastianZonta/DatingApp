@@ -15,7 +15,7 @@ currentUser$=this.currentUserSource.asObservable();
 
   constructor(private http:HttpClient) { }
 
-login(model:User) : Observable<User>{
+login(model:User){
  return this.http.post(this.baseURL+"Auth/login",model).pipe(
    map((response:User)=>
    {
@@ -24,9 +24,18 @@ login(model:User) : Observable<User>{
        localStorage.setItem('user',JSON.stringify(user));
        this.currentUserSource.next(user);
      }
-     return user;
    })
  );
+}
+register(model: User){
+  return this.http.post(this.baseURL+'Auth/register',model).pipe(
+    map( (user : User)=>{
+      if(user){
+        localStorage.setItem('user',JSON.stringify(user));
+        this.currentUserSource.next(user);
+      }
+    })
+  )
 }
 setCurrentUser(user : User){
   this.currentUserSource.next(user);

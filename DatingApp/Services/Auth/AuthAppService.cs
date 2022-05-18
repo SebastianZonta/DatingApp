@@ -38,7 +38,7 @@ namespace DatingApp.Services.Auth
 
         }
 
-        public async Task<AppUserDto> Register(RegisterUser inputUser)
+        public async Task<LoggedUserDto> Register(RegisterUser inputUser)
         {
             var existsUser = await _context.Users.FirstOrDefaultAsync(e => e.UserName == inputUser.UserName.ToLower());
             if (existsUser is not null) throw new Exception("The user already exists");
@@ -51,7 +51,8 @@ namespace DatingApp.Services.Auth
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return _mapper.Map<AppUser,AppUserDto>(user);
+            //return _mapper.Map<AppUser,AppUserDto>(user);
+            return new LoggedUserDto { UserName = user.UserName, Token = _tokenAppService.CreateToken(user) };
         }
     }
 }
